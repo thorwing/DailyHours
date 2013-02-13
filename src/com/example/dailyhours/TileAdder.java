@@ -14,8 +14,9 @@ import android.widget.TextView;
 public class TileAdder extends Activity {
 
 	private DailyHoursDbHelper mDbHelper; 
-	private String mType;
+	private String mType; 
 	private String mCategory;
+	private int mIcon;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,7 @@ public class TileAdder extends Activity {
 		Intent intent = getIntent();
 		mType = intent.getStringExtra(DailyHours.EVENT_TYPE);
 		mCategory = intent.getStringExtra(DailyHours.EVENT_CATEGORY);
+		mIcon = intent.getIntExtra(DailyHours.EVENT_ICON, 0);
 		
 		TextView textview = (TextView)findViewById(R.id.textView1); 
 		textview.setText(mType);
@@ -44,14 +46,14 @@ public class TileAdder extends Activity {
 		String message = editText.getText().toString();
 		System.out.println(message);	
 		
-		insertTileRecord(message, mType, mCategory);
+		insertTileRecord(message, mCategory, mType, mIcon);
 		
 		Intent intent = new Intent(this, DailyHours.class);
 		startActivity(intent);
 	}
 	
 	
-	private void insertTileRecord(String title, String type, String category) {				
+	private void insertTileRecord(String title, String category, String type, int icon) {				
 		// Opens the database object in "write" mode.	
         SQLiteDatabase db = mDbHelper.getWritableDatabase();        
 
@@ -61,12 +63,17 @@ public class TileAdder extends Activity {
             values.put(DailyHoursContract.Tile.COLUMNE_NAME_TITLE, title);
         }
         
+        if (values.containsKey(DailyHoursContract.Tile.COLUMNE_NAME_CATEGORY) == false) {
+            values.put(DailyHoursContract.Tile.COLUMNE_NAME_CATEGORY, category);
+        }
+        
         if (values.containsKey(DailyHoursContract.Tile.COLUMNE_NAME_TYPE) == false) {
             values.put(DailyHoursContract.Tile.COLUMNE_NAME_TYPE, type);
         }
+             
         
-        if (values.containsKey(DailyHoursContract.Tile.COLUMNE_NAME_CATEGORY) == false) {
-            values.put(DailyHoursContract.Tile.COLUMNE_NAME_CATEGORY, category);
+        if (values.containsKey(DailyHoursContract.Tile.COLUMNE_NAME_ICON) == false) {
+            values.put(DailyHoursContract.Tile.COLUMNE_NAME_ICON, icon);
         }
         
         // Performs the insert and returns the ID of the new note.

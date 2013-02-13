@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <string name="app_name">DailyHours</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="app_name">DailyHours</string>    
     <string name="menu_settings">Settings</string>
-    <string name="title_activity_tile_adder">TileAdder</string>
-    <string name="title_activity_play">PlayActivity</string>
-    <string name="title_activity_work">WorkActivity</string>
+    <string name="title_activity_tile_adder">增加磁贴</string>
+    <string name="title_activity_play">玩</string>
+    <string name="title_activity_work">作</string>
     <string name="title_activity_events_selector">EventsSelector</string>
-
+	
 </resources>

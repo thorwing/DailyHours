@@ -11,8 +11,9 @@ public class DailyHoursContract {
 		
 		public static final String TABLE_NAME = "tiles";
 		public static final String COLUMNE_NAME_TITLE = "title";
-		public static final String COLUMNE_NAME_TYPE = "type";
 		public static final String COLUMNE_NAME_CATEGORY = "category";
+		public static final String COLUMNE_NAME_TYPE = "type";		
+		public static final String COLUMNE_NAME_ICON = "icon";
 		
 		private Tile() {}	
 	}	
@@ -22,6 +23,7 @@ public class DailyHoursContract {
 		
 		public static final String TABLE_NAME = "events";
 		public static final String COLUMNE_NAME_TITLE = "title";
+		public static final String COLUMNE_NAME_ICON = "icon";
 		
 		private Event() {}
 	}

@@ -9,19 +9,19 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 
-import com.example.dailyhours.EventsXmlParser.Event;
+import com.example.dailyhours.model.Tile;
 
-public class EventIconAdapter extends BaseAdapter {
+public class TileAdapter extends BaseAdapter {
 	private Context mContext;
-	public List<Event> mEvents; 
+	public List<Tile> mTiles; 
 	
-	public EventIconAdapter(Context c, List<Event> events) {
+	public TileAdapter(Context c, List<Tile> tiles) {
 		mContext = c;
-		mEvents= events;
+		mTiles= tiles;
 	}
 	
 	public int getCount() {
-		return mEvents.size();
+		return mTiles.size();
 	}
 
 	@Override
@@ -46,10 +46,9 @@ public class EventIconAdapter extends BaseAdapter {
             imageView.setPadding(6, 6, 6, 6);
         } else {
             imageView = (ImageView) convertView;
-        }
-        int resID = mContext.getResources().getIdentifier(mEvents.get(position).icon, "drawable", mContext.getPackageName());       
+        }      
 
-        imageView.setImageResource(resID);
+        imageView.setImageResource(mTiles.get(position).iconId);
         return imageView;
 	}	
 }

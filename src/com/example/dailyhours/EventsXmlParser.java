@@ -8,11 +8,20 @@ import java.util.List;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
+import android.content.Context;
 import android.content.res.XmlResourceParser;
 import android.util.Xml;
 
+import com.example.dailyhours.model.Event;
+
 public class EventsXmlParser {
 	private static final String ns = null;
+	private Context mContext;
+	
+	public EventsXmlParser(Context context) {
+		mContext = context;
+	}
+	
 	
 	public List parse(InputStream in, String category) throws XmlPullParserException, IOException {
 		try {
@@ -60,17 +69,7 @@ public class EventsXmlParser {
 	            break;
 	        }
 	    }
-	 }	
-	
-	public static class Event {		
-		public final String title;
-		public final String icon;
-		
-		private Event(String title, String icon) {
-			this.title = title;
-			this.icon = icon;
-		}
-	}
+	 }		
 		
 	private Event readEvent(XmlPullParser parser) throws XmlPullParserException, IOException {
 		parser.require(XmlPullParser.START_TAG, ns, "event");
@@ -92,7 +91,8 @@ public class EventsXmlParser {
 	        }
 		}
 		
-		return new Event(title, icon);
+		int iconID = mContext.getResources().getIdentifier(icon, "drawable", mContext.getPackageName());     
+		return new Event(title, iconID);
 	}
 	
 	// Processes title tags.

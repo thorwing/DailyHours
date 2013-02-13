@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DailyHoursDbHelper extends SQLiteOpenHelper {
 	private static final String TEXT_TYPE = " TEXT";
+	private static final String INTEGER_TYPE = " INT";
 	private static final String COMMA_SEP = ",";
 	
 	private static final int DATABASE_VERSION = 1;
@@ -17,8 +18,9 @@ public class DailyHoursDbHelper extends SQLiteOpenHelper {
 		"CREATE TABLE " + DailyHoursContract.Tile.TABLE_NAME + " (" +
 		DailyHoursContract.Tile._ID + " INTEGER PRIMARY KEY" + COMMA_SEP +  
 		DailyHoursContract.Tile.COLUMNE_NAME_TITLE + TEXT_TYPE + COMMA_SEP +
-		DailyHoursContract.Tile.COLUMNE_NAME_TYPE + TEXT_TYPE + COMMA_SEP +
-		DailyHoursContract.Tile.COLUMNE_NAME_CATEGORY + TEXT_TYPE + 
+		DailyHoursContract.Tile.COLUMNE_NAME_CATEGORY + TEXT_TYPE + COMMA_SEP +
+		DailyHoursContract.Tile.COLUMNE_NAME_TYPE + TEXT_TYPE + COMMA_SEP +		
+		DailyHoursContract.Tile.COLUMNE_NAME_ICON + INTEGER_TYPE +
 		" )";
 	private static final String SQL_DELETE_TILES = 
 		"DROP TABLE IF EXISTS " + DailyHoursContract.Tile.TABLE_NAME;	
